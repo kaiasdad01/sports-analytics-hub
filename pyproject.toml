@@ -1,0 +1,192 @@
+[project]
+name = "sports-analytics-project"
+version = "0.1.0"
+description = "A comprehensive sports analytics platform for NFL data with predictive modeling and visualization"
+authors = [
+    {name = "Matt Dwyer", email = "mjbdwyer@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+
+dependencies = [
+    # Data manipulation
+    "polars>=0.20.0",
+    "numpy>=1.24.0",
+    
+    # HTTP client
+    "httpx>=0.24.0",
+    
+    # Data validation and configuration
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "python-dotenv>=1.0.0",
+    
+    # Google Cloud
+    "google-cloud-bigquery>=3.11.0",
+    "google-cloud-storage>=2.10.0",
+    
+    # Database
+    "sqlalchemy>=2.0.0",
+    "psycopg2-binary>=2.9.0",
+    
+    # API Framework
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    
+    # Visualization
+    "streamlit>=1.28.0",
+    "plotly>=5.17.0",
+    "altair>=5.1.0",
+    
+    # ML
+    "scikit-learn>=1.3.0",
+    "xgboost>=2.0.0",
+    "mlflow>=2.8.0",
+    
+    # Orchestration
+    "prefect>=2.14.0",
+    
+    # Logging
+    "structlog>=23.1.0",
+    "rich>=13.0.0",
+    
+    # Utilities
+    "click>=8.1.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Testing
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    
+    # Code quality
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+    "pre-commit>=3.5.0",
+    
+    # Type stubs
+    "types-pyyaml>=6.0.0",
+    "types-requests>=2.31.0",
+    
+    # Jupyter
+    "jupyter>=1.0.0",
+    "ipykernel>=6.25.0",
+    "ipython>=8.12.0",
+    
+    # Visualization (dev)
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+]
+
+dbt = [
+    "dbt-core>=1.7.0",
+    "dbt-bigquery>=1.7.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+# Set the maximum line length
+line-length = 100
+
+# Assume Python 3.11
+target-version = "py311"
+
+# Enable specific rule sets
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "ARG", # flake8-unused-arguments
+    "SIM", # flake8-simplify
+]
+
+# Ignore specific rules
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+# Exclude directories
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    "dbt_project/target",
+    "dbt_project/logs",
+]
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Indent with spaces
+indent-style = "space"
+
+[tool.ruff.lint.isort]
+known-first-party = ["ingestion", "ml", "api", "orchestration"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false  # Set to true when you want strict typing
+ignore_missing_imports = true
+exclude = [
+    "venv",
+    ".venv",
+    "tests",
+    "dbt_project",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--tb=short",
+    "--cov=.",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/.venv/*",
+    "*/dbt_project/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
