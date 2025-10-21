@@ -1,0 +1,8 @@
+version: 2
+
+sources: 
+  - name: nfl_raw
+    database: sports-analytics-475802
+    schema: nfl_raw
+    tables: 
+      - name: play_by_play
