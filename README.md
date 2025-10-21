@@ -11,8 +11,8 @@ This platform follows a **Modern Data Stack** approach:
 - **Transformation Layer**: dbt for data modeling and transformations
 - **Application Database**: PostgreSQL for application state and metadata
 - **ML/Analytics**: Python with scikit-learn and XGBoost for predictive modeling
-- **Orchestration**: Prefect 
-- **Frontend**: Streamlit for initial interaction layer
+- **Orchestration**: Prefect (to be added)
+- **Frontend**: Streamlit for initial interaction layer -- eventually full deployment
 - **Backend API**: FastAPI for serving predictions and analytics
 
 ## Features
@@ -21,19 +21,19 @@ This platform follows a **Modern Data Stack** approach:
 - **Player Analytics**: Historical performance metrics, trends, and insights
 - **Game Predictions**: Win/loss probabilities, total points forecasting
 - **Player Predictions**: QB Passing Yards, Rushing Yards, TDs, etc. 
-- **Interactive Dashboards**: Real-time data visualization with Streamlit
-- **ML Pipeline**: Automated model training and evaluation
+- **Interactive Dashboards**: Real-time data visualization with Streamlit (and maybe Looker?)
+- **ML Pipeline**: Automated model training and evaluation; implement MLFlow
 
 ### Planned Expansions - near term
-- **College Football (CFB)**: Extend analytics to NCAA Football
-- **NBA**: Basketball analytics and predictions
+- **College Football (CFB)**: Extend analytics to NCAA Football using CFBdata API | P1
+- **NBA**: Basketball analytics and predictions | P2
 
 
 ## Tech Stack
 
 ### Core Technologies
-- **Python 3.11+** with **uv**
-- **Polars**
+- **Python+** with **uv**
+- **Polars** (though Pandas still used in some spots)
 - **Google BigQuery** 
 - **dbt** 
 - **PostgreSQL**
@@ -72,7 +72,8 @@ nfl_v3/
 ## Data Sources
 
 - **nflreadypy** | for most core API data
-- **ftn** | for enhanced fantasy data
+- **ftn** | for enhanced fantasy data (not yet connected)
+- **ESPN API** | for real-time scores and data (not yet connected)
 
 To be confirmed: 
 - Odds data source
