@@ -27,10 +27,7 @@ globs:
 - Functions should be small and focused
 - If a function needs a comment to explain what it does, it should be split
 
-## DRY (Don't Repeat Yourself)
-- Extract repeated code into reusable functions
-- Share common logic through proper abstraction
-- Maintain single sources of truth
+
 
 ## Clean Structure
 - Keep related code together
