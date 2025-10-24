@@ -1,19 +1,25 @@
 version: 2
 
-sources: 
+sources:
   - name: nfl_raw
     database: sports-analytics-475802
     schema: nfl_raw
-    tables: 
-      - name: play_by_play
-      - name: schedules
-      - name: rosters
-      - name: player_stats
-      - name: teams
-      - name: nextgen_stats
-      - name: rosters_weekly
+    tables:
+      - name: combine
+      - name: contracts
       - name: depth_charts
+      - name: draft_picks
+      - name: ff_opportunity
       - name: ff_playerids
       - name: ff_rankings
-      - name: ff_opportunity
+      - name: nextgen_stats
+      - name: officials
+      - name: play_by_play
+      - name: player_stats
       - name: players
+      - name: rosters
+      - name: rosters_weekly
+      - name: schedules
+      - name: snap_counts
+      - name: teams
+      - name: trades
