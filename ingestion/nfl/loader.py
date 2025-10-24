@@ -1,5 +1,3 @@
-"""BigQuery data loader."""
-
 import logging
 from typing import Literal
 import polars as pl
