@@ -1,3 +1,5 @@
+# Documentation on nflreadpy package
+
 nflreadpy homepage: https://nflreadpy.nflverse.com/
 Load Functions: https://nflreadpy.nflverse.com/api/load_functions/
 Configuration: https://nflreadpy.nflverse.com/api/configuration/

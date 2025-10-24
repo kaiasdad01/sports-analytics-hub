@@ -65,6 +65,41 @@ def get_bigquery_config() -> BigQueryConfig:
     """Get BigQuery configuration."""
     return BigQueryConfig.from_env()
 
+@dataclass
+class GCSConfig:
+
+    project_id: str
+    bucket_name: str
+
+    @classmethod
+    def from_env(cls) -> "GCSConfig":
+        return cls(
+            project_id=os.getenv("GCP_PROJECT_ID", ""),
+            bucket_name=os.getenv("GCS_RAW_BUCKET", ""),
+        )
+    
+    def get_raw_path(self, source: str, data_type: str, **partition_keys) -> str:
+        """
+        Build GCS path for raw data with partitioning.
+
+        Args:
+            source: Data source name (like 'nflreadpy')
+            data_type: Type of data (pbp, schedules, etc.)
+            **partition_keys: Partition keys (e.g., season=2025)
+
+        Returns:
+            GCS path like: raw/nfl/play_by_play/season=2025
+        """
+        path_parts = ["raw", source, data_type]
+
+        for key, value in sorted(partition_keys.items()):
+            path_parts.append(f"{key}={value}")
+
+        return "/".join(path_parts)
+    
+def get_gcs_config() -> GCSConfig:
+    """Get GCS Config"""
+    return GCSConfig.from_env()
 
 def get_ingestion_config() -> IngestionConfig:
     """Get ingestion configuration."""

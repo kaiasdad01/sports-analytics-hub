@@ -1,5 +1,3 @@
-"""NFL data extraction using nflreadpy."""
-
 import logging
 from typing import Optional
 import polars as pl
@@ -11,8 +9,8 @@ logger = logging.getLogger(__name__)
 class NFLExtractor:
     """Extract NFL data from nflreadpy."""
     
-    # Data types that don't accept seasons parameter
-    NO_SEASONS_PARAM = {'teams', 'trades', 'contracts'}
+    # these calls will error if we try to include season
+    NO_SEASONS_PARAM = {'teams', 'trades', 'contracts', 'players', 'ff_rankings', 'ff_playerids'}
     
     def __init__(self):
         """Initialize the NFL extractor."""
@@ -39,7 +37,7 @@ class NFLExtractor:
             if seasons is None:
                 seasons = [self.current_season]
         
-        # Map data types to nflreadpy functions
+        # execute extraction in bulk based on data type
         data_type_map = {
             'pbp': nfl.load_pbp,
             'play_by_play': nfl.load_pbp,
@@ -77,7 +75,7 @@ class NFLExtractor:
         logger.info(f"Extracting {data_type} for seasons: {seasons}")
         
         try:
-            # Only pass seasons if the data type accepts it
+            
             if data_type in self.NO_SEASONS_PARAM:
                 df = load_func(**kwargs)
             else:
@@ -88,3 +86,43 @@ class NFLExtractor:
         except Exception as e:
             logger.error(f"Error extracting {data_type}: {e}")
             raise
+    
+    def extract_write_gcs(
+            self,
+            data_type: str,
+            gcs_writer, # GCSWriter instance
+            seasons: Optional[list[int]] = None,
+            **kwargs
+        ) -> tuple[pl.DataFrame, str]:
+        """
+        Extract data and write to GCS.
+
+        Args:
+            data_type: type of data extracting
+            gcs_writer: GCSWriter instance
+            seasons: List of seasons
+            **kwargs: Additional args
+        
+        Returns:
+            Tuple of (DataFrame, GCS URI)
+        """
+        df = self.extract(data_type, seasons=seasons, **kwargs)
+
+        if df.is_empty():
+            logger.warning(f"No data extracted for {data_type}, skipping GCS write.")
+            return df, ""
+        
+        # ID partition keys
+        partition_keys = {} 
+        if seasons and len(seasons) == 1:
+            partition_keys['season'] = seasons[0]
+        
+        # Build GCS path
+        from ingestion.config import get_gcs_config
+        config = get_gcs_config()
+        path = config.get_raw_path("nfl", data_type, **partition_keys)
+
+        gcs_uri = gcs_writer.write(data=df, path=path)
+
+        return df, gcs_uri
+    

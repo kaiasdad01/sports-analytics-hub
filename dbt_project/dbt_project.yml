@@ -20,7 +20,5 @@ models:
   nfl_analytics:
     staging:
       +materialized: table
-    intermediate:
-      +materialized: table
     marts:
       +materialized: table

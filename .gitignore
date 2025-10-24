@@ -151,6 +151,12 @@ dbt_project/target/
 dbt_project/logs/
 dbt_project/profiles.yml
 dbt_project/.dbt/
+dbt_project/dbt_packages/
+dbt_project/dbt_internal_packages/
+dbt_project/package-lock.yml
+*.bkp
+*.backup
+*.old
 
 # MLflow
 mlruns/
@@ -185,6 +191,7 @@ build/
 # Terraform
 *.tfstate
 *.tfstate.*
+*.tfstate.backup
 .terraform/
 .terraform.lock.hcl
 

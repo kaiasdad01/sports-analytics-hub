@@ -6,3 +6,14 @@ sources:
     schema: nfl_raw
     tables: 
       - name: play_by_play
+      - name: schedules
+      - name: rosters
+      - name: player_stats
+      - name: teams
+      - name: nextgen_stats
+      - name: rosters_weekly
+      - name: depth_charts
+      - name: ff_playerids
+      - name: ff_rankings
+      - name: ff_opportunity
+      - name: players

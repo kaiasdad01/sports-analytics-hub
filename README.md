@@ -1,5 +1,6 @@
 # Sports Analytics Platform
 
+<<<<<<< HEAD
 A comprehensive sports analytics platform, starting with NFL, to analyze team and player data - and make predictions about future outcomes. 
 
 ## Architecture
@@ -77,3 +78,6 @@ nfl_v3/
 
 To be confirmed: 
 - Odds data source
+=======
+A comprehensive sports analytics platform, starting with NFL, to analyze team and player data - and make predictions about future outcomes. 
+>>>>>>> 2a3e357 (Updated pipeline to send raw data to GCS first. And, added additional data sources (players, fantasy football, combine, etc.))
