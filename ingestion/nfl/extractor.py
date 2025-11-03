@@ -10,7 +10,7 @@ class NFLExtractor:
     """Extract NFL data from nflreadpy."""
     
     # these calls will error if we try to include season
-    NO_SEASONS_PARAM = {'teams', 'trades', 'contracts', 'players', 'ff_rankings', 'ff_playerids'}
+    NO_SEASONS_PARAM = {'teams', 'trades', 'contracts', 'injuries', 'players', 'ff_rankings', 'ff_playerids'}
     
     def __init__(self):
         """Initialize the NFL extractor."""
@@ -40,7 +40,6 @@ class NFLExtractor:
         # execute extraction in bulk based on data type
         data_type_map = {
             'pbp': nfl.load_pbp,
-            'play_by_play': nfl.load_pbp,
             'schedules': nfl.load_schedules,
             'rosters': nfl.load_rosters,
             'rosters_weekly': nfl.load_rosters_weekly,
