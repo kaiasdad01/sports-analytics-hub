@@ -3,7 +3,8 @@
 A comprehensive sports analytics platform, starting with NFL, to analyze team and player data - and make predictions about future outcomes.
 
 #### Tech Stack
-**python** - incl. Polars, BeautifulSoup, nflreadpy
+
+**python** - incl. Polars, BeautifulSoup, nflreadpy 
 **dbt** for transformations (implied but, **SQL** too)
 **Google Cloud Warehouse** as a lake, and **BigQuery** as my warehouse
 **terraform** for infrastructure as code (for GCP resources)
