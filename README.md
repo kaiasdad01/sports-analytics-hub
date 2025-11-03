@@ -40,6 +40,15 @@ using ingestion/storage/gcs_to_bq_loader.py, I'm moving raw data from GCS to Big
 #### dbt models
 OK! After getting the data into BigQuery, it's still in a relatively raw state. Using dbt to manage the transformations & model, I start with staging models - which contain light transformations (e.g., naming is the big one). I've kept a 1:1 raw -> stg mapping. I debated whether or not to introduce intermediate tables, but ultimately decided against it for this usecase. In a professional setting I might consider it to improve data quality & access. Right now, I've got a few marts created - but have a list of additional marts to create based on the vast amount of data I've been able pull in here. 
 
+### Consumable Data Marts
+Ultimately, we create 4 consumable data marts: 
+- ** team game performance ** - game level stats aggregated by team
+- ** player game performance ** - game level stats aggregated by player
+- ** team season stats ** - summary of team performance over the course of a season
+- ** player season stats ** - summary of a player's performance over the course of a season
+
+These marts are easily queryable, and will serve as primary basis for analytics layer. 
+
 ### What's Next? 
 Now that we have the core pipeline up & running, I'll move on to implementing my models + an analytics dashboard. This will get us to p0. 
 

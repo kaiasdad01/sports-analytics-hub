@@ -50,12 +50,12 @@ team_offense as (
         , sum(case when field_goal_result = 'made' then 1 else 0 end) as field_goals_made
         , sum(case when field_goal_result = 'missed' then 1 else 0 end) as field_goals_missed
         , sum(case when field_goal_result = 'blocked' then 1 else 0 end) as field_goals_blocked
-        , sum(case when extra_point_result = 'made' then 1 else 0 end) as extra_points_made
-        , sum(case when extra_point_result = 'missed' then 1 else 0 end) as extra_points_missed
+        , sum(case when extra_point_result = 'good' then 1 else 0 end) as extra_points_made
+        , sum(case when extra_point_result = 'failed' then 1 else 0 end) as extra_points_missed
         , sum(case when extra_point_result = 'blocked' then 1 else 0 end) as extra_points_blocked
         , sum(case when two_point_conv_result = 'success' then 1 else 0 end) as two_point_conversions
-        , sum(case when two_point_conv_result = 'failed' then 1 else 0 end) as two_point_conversions_failed
-        , sum(case when two_point_conv_result = 'blocked' then 1 else 0 end) as two_point_conversions_blocked
+        , sum(case when two_point_conv_result = 'failure' then 1 else 0 end) as two_point_conversions_failed
+        
 
         -- Down efficiency
         , count(case when down = 3 then 1 end) as third_down_attempts
@@ -236,7 +236,7 @@ final as (
         , o.extra_points_blocked
         , o.two_point_conversions
         , o.two_point_conversions_failed
-        , o.two_point_conversions_blocked
+    
         
         -- Down efficiency
         , o.third_down_attempts

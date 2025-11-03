@@ -23,7 +23,7 @@ x-airflow-common:
     - ./airflow/plugins:/opt/airflow/plugins
     - ./airflow/config:/opt/airflow/config
     - .:/opt/airflow/nfl_v3
-    - ~/.config/gcloud/application_default_credentials.json:/opt/airflow/gcp-credentials.json:ro
+    - ./credentials/gcp-service-account.json:/opt/airflow/gcp-credentials.json:ro
     - ./dbt_project:/opt/airflow/dbt_project
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
