@@ -47,3 +47,11 @@ For p1 - I'll continue to add data sources, implement additional predictive mode
 ### Questions + Thoughts
 **Couldn't you have used cron + other simpler services** - Yes! But, I like to use these tools & services to continue learning - especially for the products that I don't get to use in my day job (i.e., the non-AWS stuff). 
 
+### Things to fix & improve
+- [ ] Right now, loading with a replace functionality. Update this to just look for new records and append. 
+
+- [ ] Injuries keeps breaking. Removed for now, will investigate and re-add. Working hypothesis is that the Seasons param is the root cause. 
+
+- [ ] Rename / reorg BQ datasets 
+
+- [ ] Mage looks cool?
