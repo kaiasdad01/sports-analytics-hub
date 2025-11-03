@@ -4,12 +4,12 @@ A comprehensive sports analytics platform, starting with NFL, to analyze team an
 
 #### Tech Stack
 
-**python** - incl. Polars, BeautifulSoup, nflreadpy 
-**dbt** for transformations (implied but, **SQL** too)
-**Google Cloud Warehouse** as a lake, and **BigQuery** as my warehouse
-**terraform** for infrastructure as code (for GCP resources)
-**Apache Airflow** to orchestrate this
-***more to come as the project continues***
+- **python** - incl. Polars, BeautifulSoup, nflreadpy 
+- **dbt** for transformations (implied but, **SQL** too)
+- **Google Cloud Warehouse** as a lake, and **BigQuery** as my warehouse
+- **terraform** for infrastructure as code (for GCP resources)
+- **Apache Airflow** to orchestrate this. (Docker, not using Cloud Composer right now because $$)
+- ***more to come as the project continues***
 
 # The Project - What do we have so far? 
 
