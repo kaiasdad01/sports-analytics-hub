@@ -9,7 +9,12 @@ A comprehensive sports analytics platform, starting with NFL, to analyze team an
 - **Google Cloud Warehouse** as a lake, and **BigQuery** as my warehouse
 - **terraform** for infrastructure as code (for GCP resources)
 - **Apache Airflow** to orchestrate this. (Docker, not using Cloud Composer right now because $$)
-- ***more to come as the project continues***
+
+#### Planned Tech / Considerations 
+  
+- For an analytics + viz layer, I'm considering Looker, Sigma, and Hex. I'm intrigued by Sigma / Hex - and haven't used them extensively (whereas I have used Looker a bunch) so would love to learn them. And, I think there's some interesting value in these types of integrated platforms.
+
+- Have a few key immediate next steps noted (here)[https://github.com/kaiasdad01/sports-analytics-hub/issues] such as adding dbt testing and better monitoring.
 
 # The Project - What do we have so far? 
 
