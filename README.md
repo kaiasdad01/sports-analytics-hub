@@ -42,10 +42,10 @@ OK! After getting the data into BigQuery, it's still in a relatively raw state. 
 
 ### Consumable Data Marts
 Ultimately, we create 4 consumable data marts: 
-- ** team game performance ** - game level stats aggregated by team
-- ** player game performance ** - game level stats aggregated by player
-- ** team season stats ** - summary of team performance over the course of a season
-- ** player season stats ** - summary of a player's performance over the course of a season
+- **team game performance** - game level stats aggregated by team
+- **player game performance** - game level stats aggregated by player
+- **team season stat** - summary of team performance over the course of a season
+- **player season stat** - summary of a player's performance over the course of a season
 
 These marts are easily queryable, and will serve as primary basis for analytics layer. 
 

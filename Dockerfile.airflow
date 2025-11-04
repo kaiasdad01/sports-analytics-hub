@@ -8,11 +8,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 USER airflow
 
-# Copy your project files
+# Copy project files
 COPY pyproject.toml ./
 COPY uv.lock ./
 
-# Install your dependencies directly with pip (skip uv for simplicity)
+# Install dependencies
 RUN pip install --no-cache-dir \
     polars>=0.20.0 \
     httpx>=0.24.0 \
