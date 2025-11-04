@@ -14,7 +14,7 @@ A comprehensive sports analytics platform, starting with NFL, to analyze team an
   
 - For an analytics + viz layer, I'm considering Looker, Sigma, and Hex. I'm intrigued by Sigma / Hex - and haven't used them extensively (whereas I have used Looker a bunch) so would love to learn them. And, I think there's some interesting value in these types of integrated platforms.
 
-- Have a few key immediate next steps noted (here)[https://github.com/kaiasdad01/sports-analytics-hub/issues] such as adding dbt testing and better monitoring.
+- Have a few key immediate next steps tracked in the Issues section, such as adding dbt testing and better monitoring. (https://github.com/kaiasdad01/sports-analytics-hub/issues)
 
 # The Project - What do we have so far? 
 
